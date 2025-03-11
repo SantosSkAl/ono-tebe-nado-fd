@@ -3,7 +3,6 @@
   display: grid;
   grid-template-columns: 1fr min-content 1fr;
   align-items: center;
-  /* background-color: yellow; */
   font-weight: 400;
   font-size: 18px;
   letter-spacing: 0%;
@@ -12,7 +11,6 @@
 .header__menu {
   max-width: 400px;
   line-height: 100%;
-  /* background-color: greenyellow; */
 }
 
 .header__links-list {
@@ -40,7 +38,6 @@
 .header__logo {
   width: 148px;
   height: 105px;
-  /* background-color: greenyellow; */
   display: flex;
   justify-content: center;
 }
@@ -56,11 +53,11 @@
   justify-self: end;
   font-style: normal;
   line-height: 24.3px;
-  /* background-color: greenyellow; */
 }
 
-.header__address {
-  list-style: none;
+.address__link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .main {
@@ -75,26 +72,31 @@
   background-size: 125%;
   background-position: center;
   color: rgba(255, 255, 255, 1);
+  text-transform: uppercase;
   width: 100%;
   height: auto;
-  z-index: -2;
-  margin-bottom: 180px;
+  margin-bottom: 178.4px;
+  /* сделав содержимое блока cover "по контенту" столкнулся с тем, что границы
+  кнопки добавляют 0.8+0.8=1.6px к общей высоте блока по отношению к макету.
+  Разница вроде не существенная в рамках блока, но чтобы дальнейшие блоки
+  не накапливали ошибку при сверке с макетом, сделал костыль 180 => 178.4px */
 }
 
 .overlay {
   position: absolute;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.6);
-  z-index: -1;
+  z-index: 1;
 }
 
 .cover__title {
+  position: relative;
   padding: 165px 50px 50px 50px;
   font-weight: 700;
   font-size: 100px;
   line-height: 114.99999999999999%;
   letter-spacing: 30px;
-  text-transform: uppercase;
+  z-index: 2;
 }
 
 .aligned-text {
@@ -113,15 +115,12 @@
   text-align: end;
 }
 
-/* .letter-spacing-extended {
-  letter-spacing: 30px;
-} */
-
 .no-letter-spacing {
   letter-spacing: normal;
 }
 
 .cover__description {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -130,8 +129,7 @@
   font-size: 22px;
   line-height: 28px;
   letter-spacing: 0%;
-  text-transform: uppercase;
-  height: 157px;
+  z-index: 2;
 }
 
 .cover__description-text {
@@ -147,7 +145,6 @@
 
 .lots {
   width: 1052px;
-  /* background-color: yellowgreen; */
   margin-bottom: 120px;
 }
 
@@ -186,7 +183,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  z-index: -2;
   background-size: cover;
   background-position: center;
   color: rgba(255, 255, 255, 1);
@@ -194,20 +190,18 @@
 
 .card_type_film {
   background-image: url(../images/card-lot-01.jpg);
-  z-index: -2;
 }
 
 .card_type_book {
   background-image: url(../images/card-lot-02.jpg);
-  z-index: -2;
 }
 
 .card_type_picture {
   background-image: url(../images/card-lot-03.jpg);
-  z-index: -2;
 }
 
 .card__title {
+  position: relative;
   padding: 48px 40px 5px 40px;
   font-weight: 700;
   font-size: 22px;
@@ -216,14 +210,17 @@
   text-transform: uppercase;
   text-decoration: underline;
   text-underline-offset: 3px;
+  z-index: 2;
 }
 
 .card__text {
+  position: relative;
   padding: 5px 40px 48px 40px;
   font-weight: 400;
   font-size: 20px;
   line-height: 120%;
   letter-spacing: 0%;
+  z-index: 2;
 }
 
 .lots__look-more-link {
@@ -241,7 +238,6 @@
   grid-template-columns: 334px 1fr;
   gap: 25px;
   width: 1052px;
-  /* background-color: yellowgreen; */
   margin-bottom: 180px;
 }
 
@@ -275,22 +271,21 @@
   margin-bottom: 102px;
 }
 
-.about__text-first {
-  margin-bottom: 24px;
-  margin-right: 5px;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
-  letter-spacing: 0%;
-  /* background-color: aquamarine; */
+.about__text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
-.about__text-second {
+.about__text-element {
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
   letter-spacing: 0%;
-  /* background-color: aquamarine; */
+}
+
+.about__text-element:first-child {
+  margin-right: 5px;
 }
 
 .footer {
@@ -306,7 +301,6 @@
 
 .footer__menu {
   line-height: 21px;
-  /* background-color: aquamarine; */
 }
 
 .footer__menu-list {
@@ -331,13 +325,12 @@
 .footer__social-list {
   display: flex;
   justify-content: space-between;
-  height: 48px;
   width: 240px;
-  /* background-color: yellowgreen; */
 }
 
 .footer__social-list-item {
   list-style-type: none;
+  height: 48px;
 }
 
 .footer__social-icon {
